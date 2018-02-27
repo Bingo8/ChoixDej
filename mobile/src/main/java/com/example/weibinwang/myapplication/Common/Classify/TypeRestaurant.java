@@ -8,7 +8,8 @@ public enum TypeRestaurant {
     CHINESE("Chinese"),
     FRENCH("French"),
     ITALIEN("Italien"),
-    JAPANESE("Japanese");
+    JAPANESE("Japanese"),
+    NONE("None");
 
     private String name = "";
 

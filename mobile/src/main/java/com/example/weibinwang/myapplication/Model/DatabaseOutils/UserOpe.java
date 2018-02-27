@@ -8,9 +8,9 @@ import com.example.weibinwang.myapplication.Bean.User;
 
 public interface UserOpe {
 
-    void addUser(User user);// add new user
+    long addUser(User user);// add new user
 
-    void deleteUser(User user);// delete user
+    void deleteUserByUsername(String username);// delete user
 
     void updateUser(User user);// update information of user
 

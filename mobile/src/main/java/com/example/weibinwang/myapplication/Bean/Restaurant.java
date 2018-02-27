@@ -8,12 +8,13 @@ import com.example.weibinwang.myapplication.Common.Classify.TypeRestaurant;
 
 public class Restaurant {
     private int id;
+    private String name;
     private String address;
     private String description;
     private TypeRestaurant type;
     private String contact;
 
-    private Restaurant(){
+    public Restaurant(){
         //do nothing, just wait for set() methods
     }
 
@@ -21,6 +22,7 @@ public class Restaurant {
     * The part of get() methods.
     * */
     public int getId(){return this.id;}
+    public  String getName(){return this.name;}
     public String getAddress(){return this.address;}
     public String getDescription(){return this.description;}
     public String getContact(){return this.contact;}
@@ -31,6 +33,8 @@ public class Restaurant {
     public void setId(int id){
         this.id = id;
     }
+
+    public void setName(String name) { this.name = name; }
 
     public void setAddress(String address){
         this.address = address;
