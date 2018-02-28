@@ -1,4 +1,4 @@
-package com.example.weibinwang.myapplication.View.Activity.ViewInter;
+package com.example.weibinwang.myapplication.View.ViewInter;
 
 import com.example.weibinwang.myapplication.Bean.User;
 
