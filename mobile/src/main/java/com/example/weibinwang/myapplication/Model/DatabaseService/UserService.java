@@ -2,7 +2,6 @@ package com.example.weibinwang.myapplication.Model.DatabaseService;
 
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -21,8 +20,8 @@ public class UserService implements UserOpe{
     private ContentValues values;
 
 
-    public UserService(Context context){
-        dbHelper = new DBHelper(context);
+    public UserService(DBHelper dbHelper){
+        this.dbHelper = dbHelper;
     }
 
     /*

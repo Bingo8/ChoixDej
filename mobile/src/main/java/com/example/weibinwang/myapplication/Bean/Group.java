@@ -7,7 +7,7 @@ import com.example.weibinwang.myapplication.Common.Classify.TypeGroup;
  */
 
 public class Group {
-    private int id;
+    private long id;
     private String name;
     private TypeGroup type;
     private User administrator;
@@ -19,7 +19,7 @@ public class Group {
     /*
     * The part of get() methods.
     * */
-    public int getId(){return this.id;}
+    public long getId(){return this.id;}
     public String getName(){return this.name;}
     public TypeGroup getType(){return this.type;}
     public User getAdministrator(){return this.administrator;}
@@ -27,7 +27,7 @@ public class Group {
     /*
     * The part of set() methods
     * */
-    public void setId(int id){
+    public void setId(long id){
         this.id = id;
     }
     public void setName(String n){

@@ -1,68 +1,72 @@
 package com.example.weibinwang.myapplication;
 
 import android.content.Context;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.LargeTest;
-import android.util.Log;
+import android.test.InstrumentationTestCase;
 
 import com.example.weibinwang.myapplication.Bean.Restaurant;
 import com.example.weibinwang.myapplication.Bean.User;
+import com.example.weibinwang.myapplication.Common.Classify.TypeRestaurant;
 import com.example.weibinwang.myapplication.Model.DatabaseHandler.DBHelper;
+import com.example.weibinwang.myapplication.Model.DatabaseOutils.RestaurantOpe;
 import com.example.weibinwang.myapplication.Model.DatabaseOutils.UserOpe;
+import com.example.weibinwang.myapplication.Model.DatabaseService.RestaurantService;
 import com.example.weibinwang.myapplication.Model.DatabaseService.UserService;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 /**
  * Created by weibinwang on 2018/2/25.
  */
 
-@RunWith(AndroidJUnit4.class)
-@LargeTest
-public class DatabaseUnitTest {
 
-    private DBHelper dbHelper;
+
+public class DatabaseUnitTest extends InstrumentationTestCase{
+
     private UserOpe us;
+    private RestaurantOpe rs;
+
     @Before
-    public void datatest() throws Throwable{
-        Context context = InstrumentationRegistry.getContext();
-        dbHelper = new DBHelper(context);
-        dbHelper.getReadableDatabase();
-        us = new UserService(context);
+    protected void setUp() throws Exception{
+        Context appContext = getInstrumentation().getTargetContext();
+
+        DBHelper dbHelper = new DBHelper(appContext);
+        us = new UserService(dbHelper);
+        rs = new RestaurantService(dbHelper);
     }
 
     @Test
-    public void creatObject() throws Exception{
+    public void validateUser() throws Exception {
         User user = new User();
-        Restaurant restaurant = new Restaurant();
 
         user.setUsername("WANG");
         user.setEmail("weibin.wang.fr@hotmail.com");
         user.setPassword("psd");
-        us.addUser(user);
-        Log.i("Test","OK");
+        long user_id = us.addUser(user);
+
+        user.setId(user_id);
+
+        User actualuser = us.queryUserByEmail(user.getMail());
+
+        assertEquals(actualuser.getUsername().toUpperCase(), user.getUsername().toUpperCase());
     }
 
     @Test
-    public void validaterUser() throws Exception{
+    public void validateRestaurant() throws  Exception {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setName("Sushi");
+        restaurant.setType(TypeRestaurant.JAPANESE);
+        restaurant.setDescription("Good Food");
+        restaurant.setContact("07 67 67 67 67");
+        restaurant.setAddress(" dhshjahdjshajkhjskhd ");
 
-        String username = "WANG";
-        String email = "weibin.wang.fr@hotmail.com";
-        User user = us.queryUserByEmail(email);
-        if(user.getUsername().equals(username)){
-            Log.i("TAG","Success");
-        }else{
-            Log.i("TAG","Failed");
-        }
+        long id =rs.addRestaurant(restaurant);
+
+        Restaurant actuel = rs.queryRestaurantByName("Sushi");
+
+        assertEquals(actuel.getName(),restaurant.getName());
+
     }
 
-    @After
-    public void finish(){
-        dbHelper.close();
-    }
 
 }

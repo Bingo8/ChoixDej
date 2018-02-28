@@ -1,7 +1,6 @@
 package com.example.weibinwang.myapplication.Model.DatabaseService;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -23,8 +22,8 @@ public class RestaurantService implements RestaurantOpe {
     private SQLiteDatabase database;
     private ContentValues values;
 
-    public RestaurantService(Context context){
-        dbHelper = new DBHelper(context);
+    public RestaurantService(DBHelper dbHelper){
+        this.dbHelper = dbHelper;
     }
     /*
     * add restaurant into database

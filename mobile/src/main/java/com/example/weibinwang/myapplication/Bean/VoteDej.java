@@ -9,7 +9,7 @@ import com.example.weibinwang.myapplication.Common.Classify.TypeVoteDej;
  */
 
 public class VoteDej {
-    private int id;
+    private long id;
     private User owner;
     private Restaurant purpose;
     private TypeVoteDej type;
@@ -22,7 +22,7 @@ public class VoteDej {
     /*
     * The part of get() methods.
     * */
-    public int getId(){return this.id;}
+    public long getId(){return this.id;}
     public User owner(){return this.owner;}
     public Restaurant getPurpose(){return this.purpose;}
     public int getTimes(){return this.times;}
@@ -30,7 +30,7 @@ public class VoteDej {
     /*
     * The part of set() methods.
     * */
-    public void setId(int id){
+    public void setId(long id){
         this.id = id;
     }
     public void setOwner(User owner){

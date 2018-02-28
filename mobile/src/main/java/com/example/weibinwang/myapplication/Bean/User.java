@@ -6,7 +6,7 @@ package com.example.weibinwang.myapplication.Bean;
 
 public class User {
 
-    private int id;
+    private long id;
     private String firstname;
     private String secondname;
     private String username;
@@ -16,7 +16,7 @@ public class User {
     /*
     * Constructor for user's whole based information.
     * */
-    public User(int id, String fistname, String secondname, String username, String password, String mail){
+    public User(long id, String fistname, String secondname, String username, String password, String mail){
         this.id = id;
         this.firstname = fistname;
         this.secondname = secondname;
@@ -27,7 +27,7 @@ public class User {
     /*
     * Constructor for user's main based information(id, username, password, mail)
     * */
-    public User(int id, String username, String password, String mail){
+    public User(long id, String username, String password, String mail){
         this.id = id;
         this.username = username;
         this.password = password;
@@ -41,7 +41,7 @@ public class User {
     /*
     * The part of get() methods :
     * */
-    public int getId(){return this.id;}
+    public long getId(){return this.id;}
     public String getFirstname(){return this.firstname;}
     public String getSecondname(){return this.secondname;}
     public String getUsername(){return this.username;}
@@ -51,7 +51,7 @@ public class User {
     /*
     * The part of set() methods :
     * */
-    public void setId(int id){
+    public void setId(long id){
         this.id = id;
     }
     public void setFirstname(String text){

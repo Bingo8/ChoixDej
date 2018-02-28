@@ -7,7 +7,7 @@ import com.example.weibinwang.myapplication.Common.Classify.TypeRestaurant;
  */
 
 public class Restaurant {
-    private int id;
+    private long id;
     private String name;
     private String address;
     private String description;
@@ -21,7 +21,7 @@ public class Restaurant {
     /*
     * The part of get() methods.
     * */
-    public int getId(){return this.id;}
+    public long getId(){return this.id;}
     public  String getName(){return this.name;}
     public String getAddress(){return this.address;}
     public String getDescription(){return this.description;}
@@ -30,7 +30,7 @@ public class Restaurant {
     /*
     * The part of set() methods.
     * */
-    public void setId(int id){
+    public void setId(long id){
         this.id = id;
     }
 
