@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.weibinwang.myapplication.Bean.User;
 import com.example.weibinwang.myapplication.R;
-import com.example.weibinwang.myapplication.View.Activity.ViewInter.ViewUserOperationInter;
+import com.example.weibinwang.myapplication.View.ViewInter.ViewUserOperationInter;
 
 public class Login extends AppCompatActivity implements ViewUserOperationInter{
 
