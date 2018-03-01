@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
     private static final String CREATE_TABLE_RES =
             String.format("create table %s("+RESTAURANT_ID+" integer primary key autoincrement," +
-                    "%s text not null" +
+                    "%s text not null," +
                     "%s text not null," +
                     "%s text," +
                     "%s integer not null," +
@@ -68,10 +68,10 @@ public class DBHelper extends SQLiteOpenHelper{
 
     private static final String CREATE_TABLE_GROUP =
             "create table " +TABLE_GROUP_NAME+ "("+GROUP_ID+" integer primary key autoincrement," +
-                    COLNUM_GNAME + "varchar(20) not null," +
-                    COLNUM_GTYPE+ "varchar(20) not null," +
-                    COLNUM_GADMIN+ "integer not null," +
-                    "foreign key ("+COLNUM_GADMIN+") references"+TABLE_USER_NAME+"("+USER_ID+"));";
+                    COLNUM_GNAME + " varchar(20) not null," +
+                    COLNUM_GTYPE+ " varchar(20) not null," +
+                    COLNUM_GADMIN+ " integer not null," +
+                    "foreign key ("+COLNUM_GADMIN+") references "+TABLE_USER_NAME+"("+USER_ID+"));";
     /*
     * Preferences for setting table VoteDej
     * */

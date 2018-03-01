@@ -93,7 +93,7 @@ public class RestaurantService implements RestaurantOpe {
             restaurant.setContact(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RCONTACT)));
             restaurant.setType(tranformStringToType(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RTYPE))) );
         }
-        return null;
+        return restaurant;
     }
     /*
     * private method to transform the type of restaurant from String to TypeRestaurant

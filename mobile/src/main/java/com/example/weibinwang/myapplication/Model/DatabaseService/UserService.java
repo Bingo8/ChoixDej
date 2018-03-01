@@ -82,7 +82,7 @@ public class UserService implements UserOpe{
     public User queryUserByEmail(String email) {
         database = dbHelper.getWritableDatabase();
 
-        String sql = "select * from "+DBHelper.TABLE_USER_NAME+" where " + DBHelper.COLNUM_UEMAIL+ " = ?";
+        String sql = "select * from "+DBHelper.TABLE_USER_NAME+" where " + DBHelper.COLNUM_UEMAIL+ " = ?;";
         Cursor cursor = database.rawQuery(sql, new String[]{email});
         User user = null;
 
@@ -97,18 +97,85 @@ public class UserService implements UserOpe{
        }
 
         cursor.close();
+        database.close();
         return user;
     }
 
+
+
+
+
     /*
-    * Judge if the user have existed already.
-    * @param user
+    * Judge if the username have existed already.
+    * @param username
     *
     * @return boolean
     * */
     @Override
-    public boolean isExisted(User user) {
-        User judge = queryUserByEmail(user.getMail());
-        return judge == null ? false : true;
+    public boolean isExistedUsername(String username) {
+        database = dbHelper.getReadableDatabase();
+        boolean res = false;
+        String sql = "select * from "+DBHelper.TABLE_USER_NAME
+                + " where " + DBHelper.COLNUM_UUSERNAME+ " = ?;";
+        Cursor cursor = database.rawQuery(sql, new String[]{username});
+        if(cursor.moveToFirst()){
+            res=true;
+        }
+        cursor.close();
+        database.close();
+        return res;
     }
+
+    /*
+    * Judge if email exists
+    * @param email
+    *
+    * @return boolean
+    * */
+    @Override
+    public boolean isExistedEmail(String email) {
+        database = dbHelper.getReadableDatabase();
+        boolean res = false;
+        String sql = "select * from "+DBHelper.TABLE_USER_NAME
+                + " where " + DBHelper.COLNUM_UEMAIL+" = ?;";
+        Cursor cursor = database.rawQuery(sql,new String[]{email});
+
+        if(cursor.moveToFirst()){
+            res = true;
+        }
+        cursor.close();
+        database.close();
+        return res;
+    }
+
+    /*
+    * Judge if user login successfully
+    * @param user
+    * */
+    @Override
+    public boolean isLoginSuccess(User user) {
+        boolean res = false;
+
+        database = dbHelper.getReadableDatabase();
+        String sql1 = "select * from "+DBHelper.TABLE_USER_NAME+" where "+DBHelper.COLNUM_UEMAIL+" = ? and "+ DBHelper.COLNUM_UPASSWORD+" = ?";
+        String sql2 = "select * from "+DBHelper.TABLE_USER_NAME+" where "+DBHelper.COLNUM_UUSERNAME+" = ? and " + DBHelper.COLNUM_UPASSWORD+" = ?";
+        Cursor cursor = null;
+
+        if(user.getUsername()!=null && (user.getMail() == null)){
+            cursor = database.rawQuery(sql2, new String[]{user.getUsername(),user.getPassword()});
+        }else{
+            cursor = database.rawQuery(sql1, new String[]{user.getMail(),user.getPassword()});
+        }
+
+        if(cursor.moveToFirst()){
+            res = true;
+        }
+
+        cursor.close();
+        database.close();
+        return res;
+
+    }
+
+
 }

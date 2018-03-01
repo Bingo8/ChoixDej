@@ -1,5 +1,6 @@
 package com.example.weibinwang.myapplication;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,9 +10,16 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
 public class ExampleUnitTest {
+    @Before
+    public void setUp() throws Exception {
+        System.out.print("start");
+    }
+
     @Test
     public void addition_isCorrect() throws Exception {
+        System.out.print("djskaj");
         assertEquals(4, 2 + 2);
     }
 }

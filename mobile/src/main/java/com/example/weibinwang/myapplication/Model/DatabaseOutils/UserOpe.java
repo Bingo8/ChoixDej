@@ -16,6 +16,9 @@ public interface UserOpe {
 
     User queryUserByEmail(String email);// find out user by email
 
-    boolean isExisted(User user);// if there are double users
+    boolean isExistedUsername(String username);// if there are double username
 
+    boolean isExistedEmail(String email);// if there are double email address
+
+    boolean isLoginSuccess(User user);// if user login success
 }
