@@ -117,6 +117,7 @@ public class DatabaseInstrumentedTest {
 
         assertTrue(us.isLoginSuccess(user));
     }
+
     // Test method UserService.isExistedUsername(String username)
     @Test
     public void validateDoubleUsernameTrue() throws Exception{
@@ -127,5 +128,6 @@ public class DatabaseInstrumentedTest {
     public void validateDoubleUsernameFalse() throws Exception{
         assertFalse(us.isExistedUsername("Bingo"));
     }
+
 
 }

@@ -8,16 +8,20 @@ import com.example.weibinwang.myapplication.Bean.User;
 
 public interface ViewUserOperationInter {
     // To get username
+    String getIdentity();
+
     String getUsername();
-    // To get email address
     String getEmail();
+    // To get password
+    String getPassword();
     //clear input username or email inside the widget textview
     void clearUsername();
     //clear input password inside the widget textview
     void clearUserPass();
     //hide the bar of loading
     void hideLoading();
-
+    //show loading
+    void showLoading();
     /*
     * Notice the successful state of login or registry
     * @param user info of user
@@ -31,4 +35,5 @@ public interface ViewUserOperationInter {
     * */
     void failHint(User user, String tag);
 
+    void onPostExcute();
 }

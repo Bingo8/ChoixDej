@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 
 public class ContactValidator {
     private static ContactValidator instance = new ContactValidator();
-    private String PATTERN1 ="\\d{8}";
-    private String PATTERN2 = "\\d{2}[-\\.\\s]\\d{2}[-\\.\\s]d{2}[-\\.\\s]\\d{2}";
+    private static String PATTERN1 ="\\d{8}";
+    private static String PATTERN2 = "\\d{2}[-\\.\\s]\\d{2}[-\\.\\s]d{2}[-\\.\\s]\\d{2}";
 
     public ContactValidator(){
         //do nothing

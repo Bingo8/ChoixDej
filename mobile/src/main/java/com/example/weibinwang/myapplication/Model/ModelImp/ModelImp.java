@@ -1,5 +1,7 @@
 package com.example.weibinwang.myapplication.Model.ModelImp;
 
+import android.content.Context;
+
 import com.example.weibinwang.myapplication.Bean.User;
 import com.example.weibinwang.myapplication.Model.DatabaseHandler.DBHelper;
 import com.example.weibinwang.myapplication.Model.DatabaseOutils.RestaurantOpe;
@@ -18,9 +20,10 @@ public class ModelImp implements ModelInter {
 
     private UserOpe userOperation;
     private RestaurantOpe restaurantOperation;
+    private DBHelper dbHelper;
 
-
-    public ModelImp(DBHelper dbHelper){
+    public ModelImp(Context context){
+        dbHelper = new DBHelper(context);
         userOperation = new UserService(dbHelper);
         this.restaurantOperation = new RestaurantService(dbHelper);
 
@@ -35,7 +38,7 @@ public class ModelImp implements ModelInter {
         user.setFirstname(firstname);
         user.setSecondname(secondname);
 
-        if(userOperation.isExistedUsername(user.getUsername())){
+        if(userOperation.isExistedUsername(user.getUsername()) || userOperation.isExistedEmail(user.getMail())){
             listener.failedRegister(user);
         }else{
             userOperation.addUser(user);
@@ -66,7 +69,9 @@ public class ModelImp implements ModelInter {
         }else{
             user.setUsername(identified);
         }
-        //判断是否登录成功
+
+        user.setPassword(password);
+
         if(userOperation.isLoginSuccess(user)){
             listener.successLogin(user);
         }else{

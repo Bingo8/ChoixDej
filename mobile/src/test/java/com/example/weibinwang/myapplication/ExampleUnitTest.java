@@ -1,5 +1,7 @@
 package com.example.weibinwang.myapplication;
 
+import com.example.weibinwang.myapplication.Common.Validator.EmailValidator;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,5 +23,10 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         System.out.print("djskaj");
         assertEquals(4, 2 + 2);
+    }
+    @Test
+    public void emailValidator() throws Exception {
+        String email = "dhsjahdjksha@test.com";
+        assertTrue(EmailValidator.validateEmail(email));
     }
 }

@@ -9,8 +9,7 @@ import java.util.regex.Pattern;
 
 public class EmailValidator {
 
-    private Pattern pattern;
-    private Matcher matcher;
+    private static Pattern pattern ;
     private static EmailValidator intsnace = new EmailValidator();
 
     private static final String EMAIL_PATTERN =
@@ -21,7 +20,7 @@ public class EmailValidator {
         pattern = Pattern.compile(EMAIL_PATTERN);
     }
 
-    public EmailValidator() {
+    private EmailValidator() {
         //do nothing.
     }
 
@@ -32,10 +31,10 @@ public class EmailValidator {
      *            hex for validation
      * @return true valid hex, false invalid hex
      */
-    public boolean validateEmail(final String hex) {
+    public static boolean validateEmail(final String hex) {
 
-        matcher = pattern.matcher(hex);
+        Matcher matcher = pattern.matcher(hex);
+
         return matcher.matches();
-
     }
 }
