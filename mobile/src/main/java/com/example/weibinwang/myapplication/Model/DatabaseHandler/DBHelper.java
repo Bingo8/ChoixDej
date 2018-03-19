@@ -85,7 +85,6 @@ public class DBHelper extends SQLiteOpenHelper{
             "create table "+TABLE_VOTEDEJ_NAME+"("+VOTEDEJ_ID+" integer primary key autoincrement," +
                     COLNUM_VDOWNER+" integer not null," +
                     COLNUM_VDPURPOSE+" integer not null," +
-                    COLNUM_VDTYPE+" varchar(4) not null," +
                     "foreign key ("+COLNUM_VDOWNER+") references "+TABLE_USER_NAME+"("+USER_ID+")," +
                     "foreign key ("+COLNUM_VDPURPOSE+") references "+TABLE_VOTEDEJ_NAME+"("+RESTAURANT_ID+"));";
     /*

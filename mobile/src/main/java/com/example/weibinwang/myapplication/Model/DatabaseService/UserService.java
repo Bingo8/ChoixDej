@@ -9,6 +9,9 @@ import com.example.weibinwang.myapplication.Bean.User;
 import com.example.weibinwang.myapplication.Model.DatabaseHandler.DBHelper;
 import com.example.weibinwang.myapplication.Model.DatabaseOutils.UserOpe;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by weibinwang on 2018/2/22.
@@ -33,9 +36,6 @@ public class UserService implements UserOpe{
     @Override
     public long addUser(User user) {
         database = dbHelper.getWritableDatabase();
-//        String sql = String.format("insert into %s(%s,%s,%s,%s,%s) values(?,?,?,?,?)",dbHelper.TABLE_USER_NAME,
-//                dbHelper.COLNUM_UFIRSTNAME,dbHelper.COLNUM_USECONDNAME,dbHelper.COLNUM_UUSERNAME,dbHelper.);
-//        database.execSQL(sql, );
         values = new ContentValues();
         values.put(DBHelper.COLNUM_UFIRSTNAME, user.getFirstname());
         values.put(DBHelper.COLNUM_USECONDNAME, user.getSecondname());
@@ -100,11 +100,6 @@ public class UserService implements UserOpe{
         database.close();
         return user;
     }
-
-
-
-
-
     /*
     * Judge if the username have existed already.
     * @param username
@@ -176,6 +171,37 @@ public class UserService implements UserOpe{
         return res;
 
     }
+    @Override
+    public User queryUserByUserId(long id){
 
+        database = dbHelper.getWritableDatabase();
+
+        String sql = "select * from "+DBHelper.TABLE_USER_NAME+" where " + DBHelper.USER_ID+ " = ?;";
+        Cursor cursor = database.rawQuery(sql, new String[]{String.valueOf(id)});
+
+        User user = null;
+
+        while(cursor.moveToNext()) {
+            user = new User();
+            user.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.USER_ID)));
+            user.setUsername(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_UUSERNAME)));
+            user.setFirstname(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_UFIRSTNAME)));
+            user.setSecondname(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_USECONDNAME)));
+            user.setEmail(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_UEMAIL)));
+            user.setPassword(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_UPASSWORD)));
+        }
+
+        cursor.close();
+        database.close();
+        return user;
+    }
+
+    public List<User> queryUsersByListId(List<Long> lstID){
+        List<User> lstUsers = new ArrayList<>();
+        for( Long id : lstID) {
+            lstUsers.add(queryUserByUserId(id));
+        }
+        return lstUsers;
+    }
 
 }

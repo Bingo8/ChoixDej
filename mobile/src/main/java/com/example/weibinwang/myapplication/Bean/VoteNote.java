@@ -19,7 +19,7 @@ public class VoteNote {
     * */
 
     public long getId(){return this.id;}
-    public User owner(){return this.owner;}
+    public User getOwner(){return this.owner;}
     public Restaurant getPurpose(){return this.purpose;}
     public int getNote(){return this.note;}
 

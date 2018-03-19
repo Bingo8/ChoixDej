@@ -74,6 +74,7 @@ public class Registry extends AppCompatActivity implements ViewUserOperationInte
             }
         });
     }
+
     private boolean validatePassword(){
         return this.getPassword().equals(this.getPassword2()) ;
     }

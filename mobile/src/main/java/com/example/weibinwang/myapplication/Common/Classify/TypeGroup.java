@@ -6,7 +6,8 @@ package com.example.weibinwang.myapplication.Common.Classify;
 
 public enum TypeGroup {
     OPEN("Open"),
-    PRIVATE("Private");
+    PRIVATE("Private"),
+    NONE("Error");
 
     private String name = "";
 

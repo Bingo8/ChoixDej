@@ -1,19 +1,14 @@
 package com.example.weibinwang.myapplication.Bean;
 
-import com.example.weibinwang.myapplication.Common.Classify.TypeVoteDej;
-
-
-
 /**
  * Created by weibinwang on 2018/2/22.
  */
 
 public class VoteDej {
+
     private long id;
     private User owner;
     private Restaurant purpose;
-    private TypeVoteDej type;
-    private int times;
 
     public VoteDej(){
         //do nothing
@@ -23,10 +18,9 @@ public class VoteDej {
     * The part of get() methods.
     * */
     public long getId(){return this.id;}
-    public User owner(){return this.owner;}
+    public User getOwner(){return this.owner;}
     public Restaurant getPurpose(){return this.purpose;}
-    public int getTimes(){return this.times;}
-    public TypeVoteDej getType(){return this.type;}
+
     /*
     * The part of set() methods.
     * */
@@ -39,11 +33,6 @@ public class VoteDej {
     public void setPurpose(Restaurant p){
         this.purpose = p;
     }
-    public void setType(TypeVoteDej t){
-        this.type = t;
-    }
-    public void setTimes(int times){
-        this.times = times;
-    }
+
 
 }

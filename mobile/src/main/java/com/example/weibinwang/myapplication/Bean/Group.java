@@ -21,6 +21,7 @@ public class Group {
     * */
     public long getId(){return this.id;}
     public String getName(){return this.name;}
+
     public TypeGroup getType(){return this.type;}
     public User getAdministrator(){return this.administrator;}
 

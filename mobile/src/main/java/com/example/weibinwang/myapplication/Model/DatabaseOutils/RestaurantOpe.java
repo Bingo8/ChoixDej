@@ -16,5 +16,7 @@ public interface RestaurantOpe {
 
     Restaurant queryRestaurantByName(String name);
 
+    Restaurant queryRestaurantById(long id);
+
     boolean isExisted(String name);
 }

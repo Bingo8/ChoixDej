@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public interface VoteDejOpe  {
+
     long addVoteDej(VoteDej votedej);
 
     void updateVoteDej(VoteDej votedej);

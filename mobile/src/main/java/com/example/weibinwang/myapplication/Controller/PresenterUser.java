@@ -65,6 +65,7 @@ public class PresenterUser {
                                 public void run() {
                                     viewUser.hideLoading();
                                     viewUser.successHint(user, TAG);
+                                    viewUser.onPostExcute();
                                 }
                             },3000
                     );

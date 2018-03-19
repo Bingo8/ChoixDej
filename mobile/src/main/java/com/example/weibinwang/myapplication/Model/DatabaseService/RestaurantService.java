@@ -93,8 +93,34 @@ public class RestaurantService implements RestaurantOpe {
             restaurant.setContact(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RCONTACT)));
             restaurant.setType(tranformStringToType(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RTYPE))) );
         }
+        database.close();
+        cursor.close();
         return restaurant;
     }
+
+    @Override
+    public Restaurant queryRestaurantById(long id) {
+        database = dbHelper.getWritableDatabase();
+        String sql = "select * from "+DBHelper.TABLE_RESTAURANT_NAME+" where "+DBHelper.RESTAURANT_ID+" = ?";
+        Cursor cursor = database.rawQuery(sql, new String[]{String.valueOf(id)});
+
+        Restaurant restaurant = null;
+
+        while(cursor.moveToNext()){
+            restaurant = new Restaurant();
+            restaurant.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.RESTAURANT_ID)));
+            restaurant.setName(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RNAME)));
+            restaurant.setAddress(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RADDRESS)));
+            restaurant.setDescription(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RDESCRIPTION)));
+            restaurant.setContact(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RCONTACT)));
+            restaurant.setType(tranformStringToType(cursor.getString(cursor.getColumnIndex(DBHelper.COLNUM_RTYPE))) );
+        }
+        database.close();
+        cursor.close();
+
+        return restaurant;
+    }
+
     /*
     * private method to transform the type of restaurant from String to TypeRestaurant
     * @param typeRestaurant : String
@@ -149,4 +175,6 @@ public class RestaurantService implements RestaurantOpe {
         Restaurant judge = queryRestaurantByName(name);
         return judge == null ? false : true;
     }
+
+
 }
